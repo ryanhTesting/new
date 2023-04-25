@@ -21,24 +21,27 @@
 #       shell: bash
 
 
-name: 'Hello World'
-description: 'Greet someone'
+name: 'String-gen'
+description: 'return string'
 inputs:
   string:  # id of input
     description: 'Any string'
     required: false
     default: 'Default string'
 outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
+  string:
+    description: "String-generator"
+    value: ${{ steps.string-gen.outputs.string }}
 runs:
   using: "composite"
   steps:
-    - run: echo Hello ${{ inputs.string }}.
+    - run: echo Hello, the action is running with this input: ${{ inputs.string }}.
       shell: bash
-    - id: random-number-generator
-      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+    - id: string-gen
+      run: echo "string=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash
+    - name: run script
+      run: script.sh
       shell: bash
