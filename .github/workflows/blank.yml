@@ -25,5 +25,5 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run a one-line script
         run: echo ${{secrets.password}}
-      - uses: ./.github/actions/string-gen.yml
+      - uses: ./.github/actions/string-gen/
 
