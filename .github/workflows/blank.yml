@@ -26,4 +26,6 @@ jobs:
       - name: Run a one-line script
         run: echo ${{secrets.password}}
       - uses: ./.github/actions/string-gen/
+        with:
+          string: "This is input from the workflow"
 
