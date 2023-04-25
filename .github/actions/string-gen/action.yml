@@ -1,26 +1,3 @@
-# name: 'String Generator'
-# description: 'Generates arbitrary text'
-# inputs:
-#   string:  # id of input
-#     description: 'Any string'
-#     required: false
-#     default: 'This is the default string'
-# outputs:
-#   string:
-#     description: "The input string"
-#     value: ${{ steps.string-gen.outputs.string }}
-# runs:
-#   using: "composite"
-#   steps:
-#     - id: string-gen
-#       run: echo "string=$(echo Action running: input was ${{inputs.string}})" >> $GITHUB_OUTPUT
-#       shell: bash
-#     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-#       shell: bash
-#     - run: script.sh
-#       shell: bash
-
-
 name: 'String-gen'
 description: 'return string'
 inputs:
@@ -40,8 +17,8 @@ runs:
     - id: string-gen
       run: echo "string=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       shell: bash
-    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-      shell: bash
+#     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+#       shell: bash
     - name: run script
       run: script.sh
       shell: bash
