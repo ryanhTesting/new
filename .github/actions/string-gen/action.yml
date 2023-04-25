@@ -6,14 +6,12 @@ inputs:
     required: false
     default: 'This is the default string'
 outputs:
-  random-number:
+  string:
     description: "The input string"
     value: ${{ steps.string-gen.outputs.string }}
 runs:
   using: "composite"
   steps:
-    - run: echo "Hello, the action is running"
-      shell: bash
     - id: string-gen
       run: echo "string=$(echo Action running: input was ${{inputs.string}})" >> $GITHUB_OUTPUT
       shell: bash
