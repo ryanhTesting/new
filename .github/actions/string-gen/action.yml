@@ -35,7 +35,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: echo Hello, the action is running with this input: ${{ inputs.string }}.
+    - run: echo Hello, the action is running with the following input, ${{ inputs.string }}.
       shell: bash
     - id: string-gen
       run: echo "string=$(echo $RANDOM)" >> $GITHUB_OUTPUT
