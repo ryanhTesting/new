@@ -3,7 +3,7 @@ description: 'Generates arbitrary text'
 inputs:
   string:  # id of input
     description: 'Any string'
-    required: true
+    required: false
     default: 'This is the default string'
 outputs:
   random-number:
@@ -12,7 +12,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: echo "Hello, the input string was: ${{ inputs.string }}."
+    - run: echo "Hello, the action is running"
       shell: bash
     - id: string-gen
       run: echo "string=$(echo Action running: input was ${{inputs.string}})" >> $GITHUB_OUTPUT
