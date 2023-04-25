@@ -1,21 +1,44 @@
-name: 'String Generator'
-description: 'Generates arbitrary text'
+# name: 'String Generator'
+# description: 'Generates arbitrary text'
+# inputs:
+#   string:  # id of input
+#     description: 'Any string'
+#     required: false
+#     default: 'This is the default string'
+# outputs:
+#   string:
+#     description: "The input string"
+#     value: ${{ steps.string-gen.outputs.string }}
+# runs:
+#   using: "composite"
+#   steps:
+#     - id: string-gen
+#       run: echo "string=$(echo Action running: input was ${{inputs.string}})" >> $GITHUB_OUTPUT
+#       shell: bash
+#     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+#       shell: bash
+#     - run: script.sh
+#       shell: bash
+
+
+name: 'Hello World'
+description: 'Greet someone'
 inputs:
   string:  # id of input
     description: 'Any string'
     required: false
-    default: 'This is the default string'
+    default: 'Default string'
 outputs:
-  string:
-    description: "The input string"
-    value: ${{ steps.string-gen.outputs.string }}
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-number }}
 runs:
   using: "composite"
   steps:
-    - id: string-gen
-      run: echo "string=$(echo Action running: input was ${{inputs.string}})" >> $GITHUB_OUTPUT
+    - run: echo Hello ${{ inputs.string }}.
+      shell: bash
+    - id: random-number-generator
+      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-      shell: bash
-    - run: script.sh
       shell: bash
