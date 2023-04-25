@@ -12,7 +12,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: echo Hello, the input string was: ${{ inputs.string }}.
+    - run: echo "Hello, the input string was: ${{ inputs.string }}."
       shell: bash
     - id: string-gen
       run: echo "string=$(echo Action running: input was ${{inputs.string}})" >> $GITHUB_OUTPUT
